@@ -3,8 +3,8 @@ require_relative 'question'
 class Quiz
   QUESTIONS = [
     Question.new(
-      text: 'Which of the following capital cities is closest to the North Pole?',
-      options: ['Managua', 'Canberra', 'Amsterdam', 'Nicosia', 'Mogadishu']
+      text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez',
+      options: ['Hours', 'Days', 'Months', 'Years', 'Centuries']
     ),
     Question.new(
       text: 'Which of the following capital cities is closest to the Prime Meridian?',
