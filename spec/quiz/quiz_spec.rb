@@ -15,13 +15,7 @@ describe Quiz do
 
     it 'has five options for answering the first question' do
       quiz = Quiz.new
-      expected_options = [
-        'Managua',
-        'Canberra',
-        'Amsterdam',
-        'Nicosia',
-        'Mogadishu'
-      ]
+      expected_options = ['Managua', 'Canberra', 'Amsterdam', 'Nicosia', 'Mogadishu']
       expect(quiz.next_question.options).to eq expected_options
     end
 
@@ -54,6 +48,5 @@ describe Quiz do
         'Which of the following capital cities is closest to the Prime Meridian?'
       expect(quiz.next_question.to_s).to eq expected_question
     end
-
   end
 end
