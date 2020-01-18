@@ -24,5 +24,10 @@ describe Quiz do
       ]
       expect(quiz.first_options).to eq expected_options
     end
+
+    it 'has 0 answered questions' do
+      quiz = Quiz.new
+      expect(quiz.answer_count).to eq 0
+    end
   end
 end

@@ -19,4 +19,8 @@ class Quiz
   def first_options
     QUESTIONS.first.options
   end
+
+  def answer_count
+    0
+  end
 end
