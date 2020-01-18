@@ -14,8 +14,8 @@ class Quiz
   end
 
   def first_question
-    question = Question.new('Which of the following capital cities is closest to the North Pole?')
-    question.to_s
+    first_question = Question.new('Which of the following capital cities is closest to the North Pole?')
+    first_question.to_s
   end
 
   def first_options
