@@ -1,0 +1,39 @@
+Arguments: 
+  /usr/local/Cellar/node/13.6.0/bin/node /usr/local/Cellar/yarn/1.21.1/libexec/bin/yarn.js add @rails/webpacker@4.2.2
+
+PATH: 
+  /Users/matthew.heard/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/bin:/Users/matthew.heard/.rbenv/versions/2.6.3/bin:/usr/local/Cellar/rbenv/1.1.2/libexec:/Users/matthew.heard/.sdkman/candidates/kotlin/current/bin:/Users/matthew.heard/.sdkman/candidates/java/current/bin:/Users/matthew.heard/.sdkman/candidates/groovy/current/bin:/Users/matthew.heard/.sdkman/candidates/grails/current/bin:/Users/matthew.heard/.jenv/shims:/usr/local/opt/mysql@5.6/bin:/usr/local/opt/openssl/bin:/usr/local/opt/sqlite/bin:/Users/matthew.heard/Library/Python/3.7/bin:/Users/matthew.heard/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  13.6.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: http://repo.dev.outfittery.de:4873/@rails%2fujs: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/Cellar/yarn/1.21.1/libexec/lib/cli.js:141325:19)
+      at listOnTimeout (internal/timers.js:549:17)
+      at processTimers (internal/timers.js:492:7)
+
+npm manifest: 
+  {
+    "name": "quiz",
+    "private": true,
+    "dependencies": {
+      "@rails/ujs": "^6.0.0",
+      "turbolinks": "^5.2.0",
+      "@rails/activestorage": "^6.0.0",
+      "@rails/actioncable": "^6.0.0"
+    },
+    "version": "0.1.0"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
