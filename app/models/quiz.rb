@@ -3,6 +3,8 @@ class Quiz
     false
   end
 
+  class Question; end
+
   def first_question
     'Which of the following capital cities is closest to the North Pole?'
   end
