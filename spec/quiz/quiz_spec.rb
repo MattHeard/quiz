@@ -1,8 +1,4 @@
-class Quiz
-  def complete?
-    false
-  end
-end
+require_relative '../../app/models/quiz'
 
 describe Quiz do
   describe '#complete?' do
