@@ -1,6 +1,9 @@
 class Quiz
   def initialize
-    @first_question = Question.new(text: 'Which of the following capital cities is closest to the North Pole?')
+    @first_question = Question.new(
+      text: 'Which of the following capital cities is closest to the North Pole?',
+      options: ['Managua', 'Canberra', 'Amsterdam', 'Nicosia', 'Mogadishu']
+    )
   end
 
   def complete?
@@ -8,12 +11,17 @@ class Quiz
   end
 
   class Question
-    def initialize(text:)
+    def initialize(text:, options:)
       @text = text
+      @options = options
     end
 
     def to_s
       @text
+    end
+
+    def options
+      @options
     end
   end
 
@@ -22,12 +30,6 @@ class Quiz
   end
 
   def first_options
-    [
-      'Managua',
-      'Canberra',
-      'Amsterdam',
-      'Nicosia',
-      'Mogadishu'
-    ]
+    @first_question.options
   end
 end
