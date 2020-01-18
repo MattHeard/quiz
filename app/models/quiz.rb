@@ -1,6 +1,6 @@
 class Quiz
   def initialize
-    @first_question = Question.new('Which of the following capital cities is closest to the North Pole?')
+    @first_question = Question.new(text: 'Which of the following capital cities is closest to the North Pole?')
   end
 
   def complete?
@@ -8,7 +8,7 @@ class Quiz
   end
 
   class Question
-    def initialize(text)
+    def initialize(text:)
       @text = text
     end
 
