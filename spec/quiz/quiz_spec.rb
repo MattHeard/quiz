@@ -37,5 +37,11 @@ describe Quiz do
       quiz.answer(quiz.first_question, 'Amsterdam')
       expect(quiz).to_not be_complete
     end
+
+    it 'has 1 answered question' do
+      quiz = Quiz.new
+      quiz.answer(quiz.first_question, 'Amsterdam')
+      expect(quiz.answer_count).to eq 1
+    end
   end
 end

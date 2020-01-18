@@ -8,6 +8,10 @@ class Quiz
     )
   ].freeze
 
+  def initialize
+    @answer_count = 0
+  end
+
   def complete?
     false
   end
@@ -21,9 +25,10 @@ class Quiz
   end
 
   def answer_count
-    0
+    @answer_count
   end
 
   def answer(question, option)
+    @answer_count += 1
   end
 end
