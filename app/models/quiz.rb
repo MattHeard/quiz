@@ -20,20 +20,8 @@ class Quiz
     false
   end
 
-  def first_question
-    QUESTIONS.first.to_s
-  end
-
-  def second_question
-    QUESTIONS[1].to_s
-  end
-
   def next_question
-    first_question
-  end
-
-  def first_options
-    QUESTIONS.first.options
+    QUESTIONS[0]
   end
 
   def answer_count
