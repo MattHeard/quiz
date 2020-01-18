@@ -30,4 +30,12 @@ describe Quiz do
       expect(quiz.answer_count).to eq 0
     end
   end
+
+  context 'when answering the first question' do
+    it 'is not complete' do
+      quiz = Quiz.new
+      quiz.answer(quiz.first_question, 'Amsterdam')
+      expect(quiz).to_not be_complete
+    end
+  end
 end

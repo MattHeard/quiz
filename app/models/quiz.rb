@@ -23,4 +23,7 @@ class Quiz
   def answer_count
     0
   end
+
+  def answer(question, option)
+  end
 end
