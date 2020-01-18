@@ -1,3 +1,5 @@
+require_relative 'question'
+
 class Quiz
   def initialize
     @first_question = Question.new(
@@ -8,21 +10,6 @@ class Quiz
 
   def complete?
     false
-  end
-
-  class Question
-    def initialize(text:, options:)
-      @text = text
-      @options = options
-    end
-
-    def to_s
-      @text
-    end
-
-    def options
-      @options
-    end
   end
 
   def first_question
