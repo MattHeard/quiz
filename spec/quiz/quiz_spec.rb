@@ -13,6 +13,18 @@ describe Quiz do
       expect(quiz.first_question).to eq expected_question
     end
 
+    it 'has a second question' do
+      quiz = Quiz.new
+      expected_question =
+        'Which of the following capital cities is closest to the Prime Meridian?'
+      expect(quiz.second_question).to eq expected_question
+    end
+
+    it 'sets the next question to be the first question' do
+      quiz = Quiz.new
+      expect(quiz.next_question).to eq quiz.first_question
+    end
+
     it 'has five options for answering the first question' do
       quiz = Quiz.new
       expected_options = [

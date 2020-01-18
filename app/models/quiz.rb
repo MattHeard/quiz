@@ -5,6 +5,10 @@ class Quiz
     Question.new(
       text: 'Which of the following capital cities is closest to the North Pole?',
       options: ['Managua', 'Canberra', 'Amsterdam', 'Nicosia', 'Mogadishu']
+    ),
+    Question.new(
+      text: 'Which of the following capital cities is closest to the Prime Meridian?',
+      options: ['Kigalil', 'San Marino', 'Hamilton', 'Yaounde']
     )
   ].freeze
 
@@ -18,6 +22,14 @@ class Quiz
 
   def first_question
     QUESTIONS.first.to_s
+  end
+
+  def second_question
+    QUESTIONS[1].to_s
+  end
+
+  def next_question
+    first_question
   end
 
   def first_options
