@@ -21,7 +21,7 @@ class Quiz
   end
 
   def next_question
-    QUESTIONS[0]
+    QUESTIONS[answer_count]
   end
 
   def answer_count

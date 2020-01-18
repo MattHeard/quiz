@@ -45,5 +45,15 @@ describe Quiz do
       quiz.answer(first_question, 'Amsterdam')
       expect(quiz.answer_count).to eq 1
     end
+
+    it 'sets the next question to be the first question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, 'Amsterdam')
+      expected_question =
+        'Which of the following capital cities is closest to the Prime Meridian?'
+      expect(quiz.next_question.to_s).to eq expected_question
+    end
+
   end
 end
