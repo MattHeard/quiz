@@ -50,6 +50,14 @@ describe Quiz do
       expected_question = 'Which Brontë sister wrote Jane Eyre?'
       expect(quiz.next_question.to_s).to eq expected_question
     end
+
+    it 'has four options for answering the second question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, any_answer)
+      expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne']
+      expect(quiz.next_question.options).to eq expected_options
+    end
   end
 
   context 'after answering the second question' do

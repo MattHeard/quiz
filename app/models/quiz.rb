@@ -8,7 +8,7 @@ class Quiz
     ),
     Question.new(
       text: 'Which Brontë sister wrote Jane Eyre?',
-      options: []
+      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne']
     ),
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
