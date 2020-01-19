@@ -43,7 +43,7 @@ describe Quiz do
       expect(quiz.answer_count).to eq 1
     end
 
-    it 'sets the next question to be the first question' do
+    it 'sets the next question to be the second question' do
       quiz = Quiz.new
       first_question = quiz.next_question
       quiz.answer(first_question, any_answer)
@@ -81,7 +81,7 @@ describe Quiz do
       expect(quiz.answer_count).to eq 2
     end
 
-    it 'sets the next question to be the first question' do
+    it 'sets the next question to be the third question' do
       quiz = Quiz.new
       first_question = quiz.next_question
       quiz.answer(first_question, any_answer)
