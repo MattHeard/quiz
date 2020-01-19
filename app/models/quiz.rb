@@ -7,8 +7,8 @@ class Quiz
       options: ['Hours', 'Days', 'Months', 'Years', 'Centuries']
     ),
     Question.new(
-      text: 'Which of the following capital cities is closest to the Prime Meridian?',
-      options: ['Kigalil', 'San Marino', 'Hamilton', 'Yaounde']
+      text: 'Which Brontë sister wrote Jane Eyre?',
+      options: []
     )
   ].freeze
 

@@ -47,8 +47,7 @@ describe Quiz do
       quiz = Quiz.new
       first_question = quiz.next_question
       quiz.answer(first_question, any_answer)
-      expected_question =
-        'Which of the following capital cities is closest to the Prime Meridian?'
+      expected_question = 'Which Brontë sister wrote Jane Eyre?'
       expect(quiz.next_question.to_s).to eq expected_question
     end
   end
