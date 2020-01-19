@@ -21,7 +21,7 @@ class Quiz
   end
 
   def complete?
-    false
+    @answer_count > 4
   end
 
   def next_question

@@ -75,4 +75,67 @@ describe Quiz do
       expect(quiz.next_question.options).to eq expected_options
     end
   end
+
+  context 'after answering the third question' do
+    before do
+      first_question = quiz.next_question
+      quiz.answer(first_question, anything)
+      second_question = quiz.next_question
+      quiz.answer(second_question, anything)
+      third_question = quiz.next_question
+      quiz.answer(third_question, anything)
+    end
+
+    it 'is not complete' do
+      expect(quiz).to_not be_complete
+    end
+
+    it 'has 3 answered questions' do
+      expect(quiz.answer_count).to eq 3
+    end
+  end
+
+  context 'after answering the fourth question' do
+    before do
+      first_question = quiz.next_question
+      quiz.answer(first_question, anything)
+      second_question = quiz.next_question
+      quiz.answer(second_question, anything)
+      third_question = quiz.next_question
+      quiz.answer(third_question, anything)
+      fourth_question = quiz.next_question
+      quiz.answer(fourth_question, anything)
+    end
+
+    it 'is not complete' do
+      expect(quiz).to_not be_complete
+    end
+
+    it 'has 4 answered questions' do
+      expect(quiz.answer_count).to eq 4
+    end
+  end
+
+  context 'after answering the fifth question' do
+    before do
+      first_question = quiz.next_question
+      quiz.answer(first_question, anything)
+      second_question = quiz.next_question
+      quiz.answer(second_question, anything)
+      third_question = quiz.next_question
+      quiz.answer(third_question, anything)
+      fourth_question = quiz.next_question
+      quiz.answer(fourth_question, anything)
+      fifth_question = quiz.next_question
+      quiz.answer(fifth_question, anything)
+    end
+
+    it 'is complete' do
+      expect(quiz).to be_complete
+    end
+
+    it 'has 5 answered questions' do
+      expect(quiz.answer_count).to eq 5
+    end
+  end
 end
