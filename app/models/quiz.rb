@@ -12,7 +12,7 @@ class Quiz
     ),
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
-      options: []
+      options: ['Eighteen', 'Twenty-one', 'Thirty-five']
     )
   ].freeze
 

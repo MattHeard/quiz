@@ -27,26 +27,24 @@ describe Quiz do
   end
 
   context 'after answering the first question' do
-    let(:any_answer) { 'Years' }
-
     it 'is not complete' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       expect(quiz).to_not be_complete
     end
 
     it 'has 1 answered question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       expect(quiz.answer_count).to eq 1
     end
 
     it 'sets the next question to be the second question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       expected_question = 'Which Brontë sister wrote Jane Eyre?'
       expect(quiz.next_question.to_s).to eq expected_question
     end
@@ -54,41 +52,50 @@ describe Quiz do
     it 'has four options for answering the second question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne']
       expect(quiz.next_question.options).to eq expected_options
     end
   end
 
   context 'after answering the second question' do
-    let(:any_answer) { 'Ummm' }
 
     it 'is not complete' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       second_question = quiz.next_question
-      quiz.answer(second_question, any_answer)
+      quiz.answer(second_question, anything)
       expect(quiz).to_not be_complete
     end
 
     it 'has 2 answered questions' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       second_question = quiz.next_question
-      quiz.answer(second_question, any_answer)
+      quiz.answer(second_question, anything)
       expect(quiz.answer_count).to eq 2
     end
 
     it 'sets the next question to be the third question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      quiz.answer(first_question, any_answer)
+      quiz.answer(first_question, anything)
       second_question = quiz.next_question
-      quiz.answer(second_question, any_answer)
+      quiz.answer(second_question, anything)
       expected_question = 'How old was Mary Shelley when she wrote Frankenstein?'
       expect(quiz.next_question.to_s).to eq expected_question
+    end
+
+    it 'has three options for answering the third question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, anything)
+      second_question = quiz.next_question
+      quiz.answer(second_question, anything)
+      expected_options = ['Eighteen', 'Twenty-one', 'Thirty-five']
+      expect(quiz.next_question.options).to eq expected_options
     end
   end
 end
