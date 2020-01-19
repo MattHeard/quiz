@@ -26,7 +26,7 @@ describe Quiz do
     end
   end
 
-  context 'when answering the first question' do
+  context 'after answering the first question' do
     let(:any_answer) { 'Years' }
 
     it 'is not complete' do
@@ -48,6 +48,38 @@ describe Quiz do
       first_question = quiz.next_question
       quiz.answer(first_question, any_answer)
       expected_question = 'Which Brontë sister wrote Jane Eyre?'
+      expect(quiz.next_question.to_s).to eq expected_question
+    end
+  end
+
+  context 'after answering the second question' do
+    let(:any_answer) { 'Ummm' }
+
+    it 'is not complete' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, any_answer)
+      second_question = quiz.next_question
+      quiz.answer(second_question, any_answer)
+      expect(quiz).to_not be_complete
+    end
+
+    it 'has 2 answered questions' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, any_answer)
+      second_question = quiz.next_question
+      quiz.answer(second_question, any_answer)
+      expect(quiz.answer_count).to eq 2
+    end
+
+    it 'sets the next question to be the first question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      quiz.answer(first_question, any_answer)
+      second_question = quiz.next_question
+      quiz.answer(second_question, any_answer)
+      expected_question = 'How old was Mary Shelley when she wrote Frankenstein?'
       expect(quiz.next_question.to_s).to eq expected_question
     end
   end
