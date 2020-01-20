@@ -3,11 +3,11 @@ class Report
     @quizzes = quizzes
   end
 
-  def total_choices(question:, option:)
+  def choice_count(question:, option:)
     @quizzes.count { |quiz| quiz.choice(question) == option }
   end
 
   def choice_share(question:, option:)
-    total_choices(question: question, option: option)
+    choice_count(question: question, option: option).to_f / @quizzes.size
   end
 end
