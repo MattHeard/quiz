@@ -1,20 +1,14 @@
 class Report
-  def first_distribution
-    { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 }
+  def total_choices(question:, option:)
+    0
   end
 end
 
 describe Report do
   context 'when there are no quiz responses' do
-    it 'shows a distribution of answers to the first question' do
+    it 'shows 0 choices of the first option for the first question' do
       report = Report.new
-      expect(report.first_distribution).to eq({
-        1 => 0,
-        2 => 0,
-        3 => 0,
-        4 => 0,
-        5 => 0
-      })
+      expect(report.total_choices(question: 1, option: 1)).to eq 0
     end
   end
 end
