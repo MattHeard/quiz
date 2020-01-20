@@ -22,6 +22,10 @@ describe Quiz do
     it 'has 0 answered questions' do
       expect(quiz.answer_count).to eq 0
     end
+
+    it 'has a score of 0' do
+      expect(quiz.score).to eq 0
+    end
   end
 
   context 'after answering the first question' do

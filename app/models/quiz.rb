@@ -49,4 +49,8 @@ class Quiz
   def choice(question)
     @answers[question]
   end
+
+  def score
+    0
+  end
 end
