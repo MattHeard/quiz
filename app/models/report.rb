@@ -6,4 +6,8 @@ class Report
   def total_choices(question:, option:)
     @quizzes.count { |quiz| quiz.choice(question) == option }
   end
+
+  def choice_share(question:, option:)
+    1
+  end
 end

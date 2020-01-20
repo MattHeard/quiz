@@ -20,6 +20,17 @@ describe Report do
     end
   end
 
+  context 'when there is 1 quiz response selecting the first option for the first question' do
+    it 'shows 100% of choices for the first option for the first question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      first_option = first_question.first_option
+      quiz.answer(first_question, first_option)
+      report = Report.new([quiz])
+      expect(report.choice_share(question: first_question, option: first_option)).to eq 1
+    end
+  end
+
   context 'when there is 1 quiz response selecting the second option for the first question' do
     it 'shows 0 choices of the first option for the first question' do
       quiz = Quiz.new
