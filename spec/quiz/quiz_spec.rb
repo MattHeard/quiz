@@ -53,6 +53,25 @@ describe Quiz do
     end
   end
 
+  context 'after answering the first question incorrectly' do
+    it 'has a score of 0' do
+      first_question = quiz.next_question
+      correct_answer = first_question.option(3)
+      incorrect_answer = first_question.option(0)
+      quiz.answer(first_question, incorrect_answer)
+      expect(quiz.score).to eq 0
+    end
+  end
+
+  context 'after answering the first question correctly' do
+    it 'has a score of 1' do
+      first_question = quiz.next_question
+      correct_answer = first_question.option(3)
+      quiz.answer(first_question, correct_answer)
+      expect(quiz.score).to eq 1
+    end
+  end
+
   context 'after answering the second question' do
     before do
       first_question = quiz.next_question

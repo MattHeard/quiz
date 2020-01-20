@@ -6,23 +6,28 @@ class Quiz
   QUESTIONS = [
     Question.new(
       text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez',
-      options: ['Hours', 'Days', 'Months', 'Years', 'Centuries']
+      options: ['Hours', 'Days', 'Months', 'Years', 'Centuries'],
+      correct_answer: 'Years'
     ),
     Question.new(
       text: 'Which Brontë sister wrote Jane Eyre?',
-      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne']
+      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne'],
+      correct_answer: 'Charlotte'
     ),
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
-      options: ['Eighteen', 'Twenty-one', 'Thirty-five']
+      options: ['Eighteen', 'Twenty-one', 'Thirty-five'],
+      correct_answer: 'Eighteen'
     ),
     Question.new(
       text: '',
-      options: []
+      options: [],
+      correct_answer: ''
     ),
     Question.new(
       text: '',
-      options: []
+      options: [],
+      correct_answer: ''
     )
   ].freeze
 
@@ -51,6 +56,6 @@ class Quiz
   end
 
   def score
-    0
+    (@answers[QUESTIONS.first] == QUESTIONS.first.correct_answer) ? 1 : 0
   end
 end
