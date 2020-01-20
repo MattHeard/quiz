@@ -1,14 +1,5 @@
 require_relative '../../app/models/quiz'
-
-class Report
-  def initialize(quizzes)
-    @quizzes = quizzes
-  end
-
-  def total_choices(question:, option:)
-    @quizzes.count { |quiz| quiz.choice(question) == option }
-  end
-end
+require_relative '../../app/models/report'
 
 describe Report do
   context 'when there are no quiz responses' do
