@@ -8,6 +8,6 @@ class Report
   end
 
   def choice_share(question:, option:)
-    1
+    total_choices(question: question, option: option)
   end
 end
