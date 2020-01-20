@@ -1,6 +1,7 @@
 require_relative 'question'
 
 class Quiz
+  # TODO(matt) Finish defining questions
   # TODO(matt) Move the questions into a config file
   QUESTIONS = [
     Question.new(
@@ -14,16 +15,23 @@ class Quiz
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
       options: ['Eighteen', 'Twenty-one', 'Thirty-five']
+    ),
+    Question.new(
+      text: '',
+      options: []
+    ),
+    Question.new(
+      text: '',
+      options: []
     )
   ].freeze
 
   def initialize
-    @answer_count = 0
     @answers = Hash.new
   end
 
   def complete?
-    @answer_count > 4
+    answer_count > 4
   end
 
   def next_question
@@ -31,11 +39,10 @@ class Quiz
   end
 
   def answer_count
-    @answer_count
+    QUESTIONS.count { |question| @answers[question] }
   end
 
   def answer(question, option)
-    @answer_count += 1
     @answers[question] = option
   end
 
