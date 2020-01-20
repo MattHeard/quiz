@@ -19,6 +19,7 @@ class Quiz
 
   def initialize
     @answer_count = 0
+    @answers = Hash.new
   end
 
   def complete?
@@ -35,5 +36,10 @@ class Quiz
 
   def answer(question, option)
     @answer_count += 1
+    @answers[question] = option
+  end
+
+  def choice(question)
+    @answers[question]
   end
 end

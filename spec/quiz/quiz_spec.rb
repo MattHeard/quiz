@@ -138,4 +138,13 @@ describe Quiz do
       expect(quiz.answer_count).to eq 5
     end
   end
+
+  context 'when the first option of the first question is chosen' do
+    it 'identifies the first option as chosen' do
+      first_question = quiz.next_question
+      first_option = first_question.first_option
+      quiz.answer(first_question, first_option)
+      expect(quiz.choice(first_question)).to eq first_option
+    end
+  end
 end
