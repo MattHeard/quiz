@@ -47,8 +47,8 @@ class Quiz
     QUESTIONS.count { |question| @answers[question] }
   end
 
-  def answer(question, option)
-    @answers[question] = option
+  def answer(_question, option)
+    @answers[next_question] = option
   end
 
   def choice(question)
