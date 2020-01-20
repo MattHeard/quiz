@@ -99,6 +99,18 @@ describe Quiz do
     end
   end
 
+  context 'after answering the first two questions correctly' do
+    it 'has a score of 2' do
+      first_question = quiz.next_question
+      correct_first_question_answer = first_question.option(3)
+      quiz.answer(first_question, correct_first_question_answer)
+      second_question = quiz.next_question
+      correct_second_question_answer = second_question.option(1)
+      quiz.answer(second_question, correct_second_question_answer)
+      expect(quiz.score).to eq 2
+    end
+  end
+
   context 'after answering the third question' do
     before do
       first_question = quiz.next_question

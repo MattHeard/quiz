@@ -56,6 +56,6 @@ class Quiz
   end
 
   def score
-    (@answers[QUESTIONS.first] == QUESTIONS.first.correct_answer) ? 1 : 0
+    QUESTIONS.count { |question| @answers[question] == question.correct_answer }
   end
 end
