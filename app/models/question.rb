@@ -19,4 +19,8 @@ class Question
   def first_option
     @options[0]
   end
+
+  def second_option
+    @options[1]
+  end
 end

@@ -19,13 +19,25 @@ describe Report do
   end
 
   context 'when there is 1 quiz response selecting the first option for the first question' do
-    it 'shows 0 choices of the first option for the first question' do
+    it 'shows 1 choice of the first option for the first question' do
       quiz = Quiz.new
       first_question = quiz.next_question
       first_option = first_question.first_option
       quiz.answer(first_question, first_option)
       report = Report.new([quiz])
       expect(report.total_choices(question: first_question, option: first_option)).to eq 1
+    end
+  end
+
+  context 'when there is 1 quiz response selecting the second option for the first question' do
+    it 'shows 0 choices of the first option for the first question' do
+      quiz = Quiz.new
+      first_question = quiz.next_question
+      second_option = first_question.second_option
+      quiz.answer(first_question, second_option)
+      report = Report.new([quiz])
+      first_option = first_question.first_option
+      expect(report.total_choices(question: first_question, option: first_option)).to eq 0
     end
   end
 end
