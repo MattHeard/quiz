@@ -12,11 +12,7 @@ class Question
     @options
   end
 
-  def first_option
-    @options[0]
-  end
-
-  def second_option
-    @options[1]
+  def option(i)
+    @options[i]
   end
 end

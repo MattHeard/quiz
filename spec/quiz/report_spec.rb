@@ -13,7 +13,7 @@ describe Report do
     it 'shows 1 choice of the first option for the first question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       quiz.answer(first_question, first_option)
       report = Report.new([quiz])
       expect(report.choice_count(question: first_question, option: first_option)).to eq 1
@@ -24,7 +24,7 @@ describe Report do
     it 'shows 100% of choices for the first option for the first question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       quiz.answer(first_question, first_option)
       report = Report.new([quiz])
       expect(report.choice_share(question: first_question, option: first_option)).to eq 1
@@ -35,10 +35,10 @@ describe Report do
     it 'shows 0 choices of the first option for the first question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      second_option = first_question.second_option
+      second_option = first_question.option(1)
       quiz.answer(first_question, second_option)
       report = Report.new([quiz])
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       expect(report.choice_count(question: first_question, option: first_option)).to eq 0
     end
   end
@@ -47,10 +47,10 @@ describe Report do
     it 'shows 0% of choices for the first option for the first question' do
       quiz = Quiz.new
       first_question = quiz.next_question
-      second_option = first_question.second_option
+      second_option = first_question.option(1)
       quiz.answer(first_question, second_option)
       report = Report.new([quiz])
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       expect(report.choice_share(question: first_question, option: first_option)).to eq 0
     end
   end
@@ -59,7 +59,7 @@ describe Report do
     it 'shows 2 choice of the first option for the first question' do
       first_quiz = Quiz.new
       first_question = first_quiz.next_question
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       first_quiz.answer(first_question, first_option)
       second_quiz = Quiz.new
       second_quiz.answer(first_question, first_option)
@@ -72,10 +72,10 @@ describe Report do
     it 'shows 50% of choices for the first option for the first question' do
       first_quiz = Quiz.new
       first_question = first_quiz.next_question
-      first_option = first_question.first_option
+      first_option = first_question.option(0)
       first_quiz.answer(first_question, first_option)
       second_quiz = Quiz.new
-      second_option = first_question.second_option
+      second_option = first_question.option(1)
       second_quiz.answer(first_question, second_option)
       report = Report.new([first_quiz, second_quiz])
       expect(report.choice_share(question: first_question, option: first_option))
