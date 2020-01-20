@@ -14,7 +14,7 @@ describe Report do
       quiz = Quiz.new
       first_question = quiz.next_question
       first_option = first_question.option(0)
-      quiz.answer(first_question, first_option)
+      quiz.answer(first_option)
       report = Report.new([quiz])
       expect(report.choice_count(question: first_question, option: first_option)).to eq 1
     end
@@ -25,7 +25,7 @@ describe Report do
       quiz = Quiz.new
       first_question = quiz.next_question
       first_option = first_question.option(0)
-      quiz.answer(first_question, first_option)
+      quiz.answer(first_option)
       report = Report.new([quiz])
       expect(report.choice_share(question: first_question, option: first_option)).to eq 1
     end
@@ -36,7 +36,7 @@ describe Report do
       quiz = Quiz.new
       first_question = quiz.next_question
       second_option = first_question.option(1)
-      quiz.answer(first_question, second_option)
+      quiz.answer(second_option)
       report = Report.new([quiz])
       first_option = first_question.option(0)
       expect(report.choice_count(question: first_question, option: first_option)).to eq 0
@@ -48,7 +48,7 @@ describe Report do
       quiz = Quiz.new
       first_question = quiz.next_question
       second_option = first_question.option(1)
-      quiz.answer(first_question, second_option)
+      quiz.answer(second_option)
       report = Report.new([quiz])
       first_option = first_question.option(0)
       expect(report.choice_share(question: first_question, option: first_option)).to eq 0
@@ -60,9 +60,9 @@ describe Report do
       first_quiz = Quiz.new
       first_question = first_quiz.next_question
       first_option = first_question.option(0)
-      first_quiz.answer(first_question, first_option)
+      first_quiz.answer(first_option)
       second_quiz = Quiz.new
-      second_quiz.answer(first_question, first_option)
+      second_quiz.answer(first_option)
       report = Report.new([first_quiz, second_quiz])
       expect(report.choice_count(question: first_question, option: first_option)).to eq 2
     end
@@ -73,10 +73,10 @@ describe Report do
       first_quiz = Quiz.new
       first_question = first_quiz.next_question
       first_option = first_question.option(0)
-      first_quiz.answer(first_question, first_option)
+      first_quiz.answer(first_option)
       second_quiz = Quiz.new
       second_option = first_question.option(1)
-      second_quiz.answer(first_question, second_option)
+      second_quiz.answer(second_option)
       report = Report.new([first_quiz, second_quiz])
       expect(report.choice_share(question: first_question, option: first_option))
         .to be_within(0.01)

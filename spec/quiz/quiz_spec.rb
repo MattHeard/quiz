@@ -30,8 +30,7 @@ describe Quiz do
 
   context 'after answering the first question' do
     before do
-      first_question = quiz.next_question
-      quiz.answer(first_question, anything)
+      quiz.answer(anything)
     end
 
     it 'is not complete' do
@@ -58,7 +57,7 @@ describe Quiz do
       first_question = quiz.next_question
       correct_answer = first_question.option(3)
       incorrect_answer = first_question.option(0)
-      quiz.answer(first_question, incorrect_answer)
+      quiz.answer(incorrect_answer)
       expect(quiz.score).to eq 0
     end
   end
@@ -67,17 +66,14 @@ describe Quiz do
     it 'has a score of 1' do
       first_question = quiz.next_question
       correct_answer = first_question.option(3)
-      quiz.answer(first_question, correct_answer)
+      quiz.answer(correct_answer)
       expect(quiz.score).to eq 1
     end
   end
 
   context 'after answering the second question' do
     before do
-      first_question = quiz.next_question
-      quiz.answer(first_question, anything)
-      second_question = quiz.next_question
-      quiz.answer(second_question, anything)
+      2.times { quiz.answer(anything) }
     end
 
     it 'is not complete' do
@@ -103,22 +99,17 @@ describe Quiz do
     it 'has a score of 2' do
       first_question = quiz.next_question
       correct_first_question_answer = first_question.option(3)
-      quiz.answer(first_question, correct_first_question_answer)
+      quiz.answer(correct_first_question_answer)
       second_question = quiz.next_question
       correct_second_question_answer = second_question.option(1)
-      quiz.answer(second_question, correct_second_question_answer)
+      quiz.answer(correct_second_question_answer)
       expect(quiz.score).to eq 2
     end
   end
 
   context 'after answering the third question' do
     before do
-      first_question = quiz.next_question
-      quiz.answer(first_question, anything)
-      second_question = quiz.next_question
-      quiz.answer(second_question, anything)
-      third_question = quiz.next_question
-      quiz.answer(third_question, anything)
+      3.times { quiz.answer(anything) }
     end
 
     it 'is not complete' do
@@ -132,14 +123,7 @@ describe Quiz do
 
   context 'after answering the fourth question' do
     before do
-      first_question = quiz.next_question
-      quiz.answer(first_question, anything)
-      second_question = quiz.next_question
-      quiz.answer(second_question, anything)
-      third_question = quiz.next_question
-      quiz.answer(third_question, anything)
-      fourth_question = quiz.next_question
-      quiz.answer(fourth_question, anything)
+      4.times { quiz.answer(anything) }
     end
 
     it 'is not complete' do
@@ -153,16 +137,7 @@ describe Quiz do
 
   context 'after answering the fifth question' do
     before do
-      first_question = quiz.next_question
-      quiz.answer(first_question, anything)
-      second_question = quiz.next_question
-      quiz.answer(second_question, anything)
-      third_question = quiz.next_question
-      quiz.answer(third_question, anything)
-      fourth_question = quiz.next_question
-      quiz.answer(fourth_question, anything)
-      fifth_question = quiz.next_question
-      quiz.answer(fifth_question, anything)
+      5.times { quiz.answer(anything) }
     end
 
     it 'is complete' do
@@ -178,7 +153,7 @@ describe Quiz do
     it 'identifies the first option as chosen' do
       first_question = quiz.next_question
       first_option = first_question.option(0)
-      quiz.answer(first_question, first_option)
+      quiz.answer(first_option)
       expect(quiz.choice(first_question)).to eq first_option
     end
   end
