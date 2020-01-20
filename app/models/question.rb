@@ -12,10 +12,6 @@ class Question
     @options
   end
 
-  def answered?
-    false
-  end
-
   def first_option
     @options[0]
   end
