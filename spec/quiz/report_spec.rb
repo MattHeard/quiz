@@ -31,4 +31,17 @@ describe Report do
       expect(report.total_choices(question: first_question, option: first_option)).to eq 0
     end
   end
+
+  context 'when there are 2 quiz responses selecting the first option for the first question' do
+    it 'shows 2 choice of the first option for the first question' do
+      first_quiz = Quiz.new
+      first_question = first_quiz.next_question
+      first_option = first_question.first_option
+      first_quiz.answer(first_question, first_option)
+      second_quiz = Quiz.new
+      second_quiz.answer(first_question, first_option)
+      report = Report.new([first_quiz, second_quiz])
+      expect(report.total_choices(question: first_question, option: first_option)).to eq 2
+    end
+  end
 end
