@@ -1,6 +1,7 @@
 require_relative 'question'
 
 class Quiz
+  # TODO(matt) Move the questions into a config file
   QUESTIONS = [
     Question.new(
       text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez',
