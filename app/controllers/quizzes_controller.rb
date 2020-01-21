@@ -20,6 +20,15 @@ class QuizzesController < ApplicationController
       @correct = (choice == question.correct_answer)
       @correct_answer = question.correct_answer
     end
+    @answer_count = quiz.answer_count
+    title_prefixes = {
+      0 => 'First',
+      1 => 'Second',
+      2 => 'Third',
+      3 => 'Fourth',
+      4 => 'Last'
+    }
+    @title = "#{title_prefixes[@answer_count]} question"
     @question = quiz.next_question
   end
 end
