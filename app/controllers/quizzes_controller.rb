@@ -17,7 +17,8 @@ class QuizzesController < ApplicationController
       question = quiz.next_question
       choice = question.option(choice_index)
       quiz.answer(choice)
-      puts "q1 already answered: #{choice}"
+      @correct = (choice == question.correct_answer)
+      @correct_answer = question.correct_answer
     end
     @question = quiz.next_question
   end
