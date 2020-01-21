@@ -4,7 +4,7 @@ class QuizzesController < ApplicationController
     first_question = quiz.next_question
     choice_index = params['option'].to_i
     choice = first_question.option(choice_index)
-    puts choice
+    # puts choice
   end
 
   def new
