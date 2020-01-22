@@ -10,7 +10,23 @@ class QuizzesController < ApplicationController
         question = quiz.next_question
         choice = question.option(choice_index)
         quiz.answer(choice)
-        unless record.q1
+        if record.q1
+          choice_index = record.q1.to_i
+          question = quiz.next_question
+          choice = question.option(choice_index)
+          quiz.answer(choice)
+          if record.q2
+            choice_index = record.q2.to_i
+            question = quiz.next_question
+            choice = question.option(choice_index)
+            quiz.answer(choice)
+            unless record.q3
+              record.update!(q3: latest_choice_index)
+            end
+          else
+            record.update!(q2: latest_choice_index)
+          end
+        else
           record.update!(q1: latest_choice_index)
         end
       end
@@ -35,6 +51,14 @@ class QuizzesController < ApplicationController
     end
     if record&.q1
       choice_index = record.q1.to_i
+      question = quiz.next_question
+      choice = question.option(choice_index)
+      quiz.answer(choice)
+      @correct = (choice == question.correct_answer)
+      @correct_answer = question.correct_answer
+    end
+    if record&.q2
+      choice_index = record.q2.to_i
       question = quiz.next_question
       choice = question.option(choice_index)
       quiz.answer(choice)
