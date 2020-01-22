@@ -1,34 +1,11 @@
 class QuizzesController < ApplicationController
   def update
-    quiz = Quiz.new
     latest_choice_index = params['option']
     if session[:quiz_id]
       record = QuizRecord.find(session[:quiz_id])
-      puts record.inspect
-      if record.q0
-        choice_index = record.q0.to_i
-        question = quiz.next_question
-        choice = question.option(choice_index)
-        quiz.answer(choice)
-        if record.q1
-          choice_index = record.q1.to_i
-          question = quiz.next_question
-          choice = question.option(choice_index)
-          quiz.answer(choice)
-          if record.q2
-            choice_index = record.q2.to_i
-            question = quiz.next_question
-            choice = question.option(choice_index)
-            quiz.answer(choice)
-            unless record.q3
-              record.update!(q3: latest_choice_index)
-            end
-          else
-            record.update!(q2: latest_choice_index)
-          end
-        else
-          record.update!(q1: latest_choice_index)
-        end
+      unanswered_question_key = %i[q0 q1 q2 q3 q4].find { |k| !record[k] }
+      if unanswered_question_key
+        record.update!(unanswered_question_key => latest_choice_index)
       end
     else
       record = QuizRecord.create!(q0: latest_choice_index)
