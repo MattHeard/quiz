@@ -1,2 +1,31 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div class="progress mb-3">
+  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5"></div>
+</div>
+<% if @correct %>
+  <div class="alert alert-success" role="alert">
+    Correct! It was '<%= @correct_answer %>'
+  </div>
+<% elsif @correct == false %>
+  <div class="alert alert-danger" role="alert">
+    Sorry! It was '<%= @correct_answer %>'
+  </div>
+<% end %>
+<h1>How do you compare?</h1>
+<% Quiz::QUESTIONS.each.with_index do |question| %>
+<div class="card mt-3">
+  <div class="card-body">
+    <h3><%= question %></h3>
+    <ul class="list-group">
+      <% question.options.each do |option| %>
+        <li class="list-group-item">
+          <%= option %>
+          <br />
+          (<%= @report.choice_count(question: question, option: option) %> answers)
+          <br />
+          (<%= (@report.choice_share(question: question, option: option) * 100).to_i %>%)
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>

@@ -11,7 +11,7 @@ class QuizzesController < ApplicationController
       record = QuizRecord.create!(q0: latest_choice_index)
       session[:quiz_id] = record.id
     end
-    redirect_to '/quiz'
+    redirect_to (record.q4 ? '/review' : '/quiz')
   end
 
   def edit
@@ -40,8 +40,5 @@ class QuizzesController < ApplicationController
     }
     @title = "#{title_prefixes[@answer_count]} question"
     @question = quiz.next_question
-    unless @question
-      redirect_to '/review'
-    end
   end
 end
