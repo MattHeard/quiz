@@ -43,7 +43,7 @@ class Quiz
   end
 
   def previous_question
-    nil
+    QUESTIONS[answer_count - 1] if answer_count > 0
   end
 
   def answer_count

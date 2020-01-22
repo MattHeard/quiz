@@ -50,6 +50,12 @@ describe Quiz do
       expect(quiz.next_question.to_s).to eq expected_question
     end
 
+    it 'sets the previous question to be the first question' do
+      expected_question =
+        'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez'
+      expect(quiz.previous_question.to_s).to eq expected_question
+    end
+
     it 'has five options for answering the second question' do
       expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne', 'Branwell']
       expect(quiz.next_question.options).to eq expected_options
@@ -93,6 +99,11 @@ describe Quiz do
       expect(quiz.next_question.to_s).to eq expected_question
     end
 
+    it 'sets the previous question to be the second question' do
+      expected_question = 'Which Brontë sister wrote Jane Eyre?'
+      expect(quiz.previous_question.to_s).to eq expected_question
+    end
+
     it 'has four options for answering the third question' do
       expected_options = ['Eighteen', 'Twenty-one', 'Thirty-five', 'Fifty-four']
       expect(quiz.next_question.options).to eq expected_options
@@ -129,6 +140,11 @@ describe Quiz do
       expect(quiz.next_question.to_s).to eq expected_question
     end
 
+    it 'sets the previous question to be the third question' do
+      expected_question = 'How old was Mary Shelley when she wrote Frankenstein?'
+      expect(quiz.previous_question.to_s).to eq expected_question
+    end
+
     it 'has three options for answering the fourth question' do
       expected_options = ['Jack', 'Simon', 'Piggy']
       expect(quiz.next_question.options).to eq expected_options
@@ -151,6 +167,11 @@ describe Quiz do
     it 'sets the next question to be the fifth and last question' do
       expected_question = 'In Great Expectations, does Miss Havisham die from her dress catching on fire?'
       expect(quiz.next_question.to_s).to eq expected_question
+    end
+
+    it 'sets the previous question to be the fourth question' do
+      expected_question = 'In Lord of the Flies, the first child Ralph encounters is _____.'
+      expect(quiz.previous_question.to_s).to eq expected_question
     end
 
     it 'has two options for answering the fifth and last question' do
