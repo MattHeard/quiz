@@ -2,6 +2,5 @@ Rails.application.routes.draw do
   root to: 'index#main'
 
   get 'quiz', action: :edit, controller: 'quizzes'
-
-  resource :quiz, only: %i[create]
+  post 'quiz', action: :update, controller: 'quizzes'
 end
