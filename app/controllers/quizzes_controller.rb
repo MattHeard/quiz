@@ -19,7 +19,7 @@ class QuizzesController < ApplicationController
     record = QuizRecord.find(quiz_id) if quiz_id
     repository = QuizRepository.new
     quiz = repository.find_by_id(quiz_id)
-    if record
+    if quiz.answer_count > 0
       question = quiz.previous_question
       choice = quiz.choice(question)
       @correct = (choice == question.correct_answer)
