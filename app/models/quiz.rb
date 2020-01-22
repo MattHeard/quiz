@@ -42,6 +42,10 @@ class Quiz
     QUESTIONS[answer_count]
   end
 
+  def previous_question
+    nil
+  end
+
   def answer_count
     QUESTIONS.count { |question| @answers[question] }
   end

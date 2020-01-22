@@ -13,6 +13,10 @@ describe Quiz do
         'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez'
       expect(quiz.next_question.to_s).to eq expected_question
     end
+    
+    it 'has no previous question' do
+      expect(quiz.previous_question).to be_nil
+    end
 
     it 'has five options for answering the first question' do
       expected_options = ['Hours', 'Days', 'Months', 'Years', 'Centuries']
