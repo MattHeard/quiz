@@ -1,7 +1,6 @@
 require_relative 'question'
 
 class Quiz
-  # TODO(matt) Finish defining questions
   # TODO(matt) Move the questions into a config file
   QUESTIONS = [
     Question.new(
@@ -11,23 +10,23 @@ class Quiz
     ),
     Question.new(
       text: 'Which Brontë sister wrote Jane Eyre?',
-      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne'],
+      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne', 'Branwell'],
       correct_answer: 'Charlotte'
     ),
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
-      options: ['Eighteen', 'Twenty-one', 'Thirty-five'],
+      options: ['Eighteen', 'Twenty-one', 'Thirty-five', 'Fifty-four'],
       correct_answer: 'Eighteen'
     ),
     Question.new(
-      text: '',
-      options: [],
-      correct_answer: ''
+      text: 'In Lord of the Flies, the first child Ralph encounters is _____.',
+      options: ['Jack', 'Simon', 'Piggy'],
+      correct_answer: 'Piggy'
     ),
     Question.new(
-      text: '',
-      options: [],
-      correct_answer: ''
+      text: 'In Great Expectations, does Miss Havisham die from her dress catching on fire?',
+      options: ['Yes', 'No'],
+      correct_answer: 'Yes'
     )
   ].freeze
 

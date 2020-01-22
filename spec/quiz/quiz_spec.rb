@@ -46,8 +46,8 @@ describe Quiz do
       expect(quiz.next_question.to_s).to eq expected_question
     end
 
-    it 'has four options for answering the second question' do
-      expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne']
+    it 'has five options for answering the second question' do
+      expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne', 'Branwell']
       expect(quiz.next_question.options).to eq expected_options
     end
   end
@@ -89,8 +89,8 @@ describe Quiz do
       expect(quiz.next_question.to_s).to eq expected_question
     end
 
-    it 'has three options for answering the third question' do
-      expected_options = ['Eighteen', 'Twenty-one', 'Thirty-five']
+    it 'has four options for answering the third question' do
+      expected_options = ['Eighteen', 'Twenty-one', 'Thirty-five', 'Fifty-four']
       expect(quiz.next_question.options).to eq expected_options
     end
   end
@@ -119,6 +119,16 @@ describe Quiz do
     it 'has 3 answered questions' do
       expect(quiz.answer_count).to eq 3
     end
+
+    it 'sets the next question to be the fourth question' do
+      expected_question = 'In Lord of the Flies, the first child Ralph encounters is _____.'
+      expect(quiz.next_question.to_s).to eq expected_question
+    end
+
+    it 'has three options for answering the fourth question' do
+      expected_options = ['Jack', 'Simon', 'Piggy']
+      expect(quiz.next_question.options).to eq expected_options
+    end
   end
 
   context 'after answering the fourth question' do
@@ -132,6 +142,16 @@ describe Quiz do
 
     it 'has 4 answered questions' do
       expect(quiz.answer_count).to eq 4
+    end
+
+    it 'sets the next question to be the fifth and last question' do
+      expected_question = 'In Great Expectations, does Miss Havisham die from her dress catching on fire?'
+      expect(quiz.next_question.to_s).to eq expected_question
+    end
+
+    it 'has two options for answering the fifth and last question' do
+      expected_options = ['Yes', 'No']
+      expect(quiz.next_question.options).to eq expected_options
     end
   end
 

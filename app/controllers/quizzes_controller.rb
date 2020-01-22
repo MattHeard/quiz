@@ -19,7 +19,7 @@ class QuizzesController < ApplicationController
     record = QuizRecord.find(quiz_id) if quiz_id
     quiz = Quiz.new
     if record
-      %i[q0 q1 q2].each do |answer_key|
+      %i[q0 q1 q2 q3 q4].each do |answer_key|
         if record[answer_key]
           choice_index = record[answer_key].to_i
           question = quiz.next_question
@@ -40,5 +40,8 @@ class QuizzesController < ApplicationController
     }
     @title = "#{title_prefixes[@answer_count]} question"
     @question = quiz.next_question
+    unless @question
+      # redirect to report
+    end
   end
 end
