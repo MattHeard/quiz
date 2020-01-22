@@ -41,7 +41,7 @@ class QuizzesController < ApplicationController
     @title = "#{title_prefixes[@answer_count]} question"
     @question = quiz.next_question
     unless @question
-      # redirect to report
+      redirect_to '/review'
     end
   end
 end
