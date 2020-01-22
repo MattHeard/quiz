@@ -18,9 +18,16 @@
     </div>
     <ul class="list-group list-group-flush">
       <% question.options.each do |option| %>
-        <li class="list-group-item">
+        <% if option == question.correct_answer %>
+          <li class="list-group-item list-group-item-success">
+        <% else %>
+          <li class="list-group-item">
+        <% end %>
           <%= option %>
           (<%= pluralize(@report.choice_count(question: question, option: option), 'answer') %>)
+          <% if option == @quiz.choice(question) %>
+            <span class="badge badge-primary">Your answer</span>
+          <% end %>
           <div class="progress">
             <div class="progress-bar" role="progressbar" style="width: <%= (@report.choice_share(question: question, option: option) * 100).to_i %>%" aria-valuenow="<%= (@report.choice_share(question: question, option: option) * 100).to_i %>" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
