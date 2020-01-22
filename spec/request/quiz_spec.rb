@@ -9,6 +9,7 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(response.body).to include('Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez')
     expect(response.body).to include('Years')
     post '/quiz', params: { option: "3" }
+    expect(response).to redirect_to('/quiz')
     expect(session[:quiz_id]).to_not be_nil
     get '/quiz'
     expect(response.body).to include("Correct! It was 'Years'")
@@ -16,6 +17,7 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(response.body).to include('Which Brontë sister wrote Jane Eyre?')
     expect(response.body).to include('Charlotte')
     post '/quiz', params: { option: "1" }
+    expect(response).to redirect_to('/quiz')
     expect(session[:quiz_id]).to_not be_nil
     get '/quiz'
     expect(response.body).to include("Correct! It was 'Charlotte'")
@@ -23,6 +25,7 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(response.body).to include('How old was Mary Shelley when she wrote Frankenstein?')
     expect(response.body).to include('Eighteen')
     post '/quiz', params: { option: "0" }
+    expect(response).to redirect_to('/quiz')
     expect(session[:quiz_id]).to_not be_nil
     get '/quiz'
     expect(response.body).to include("Correct! It was 'Eighteen'")
@@ -30,6 +33,7 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(response.body).to include('In Lord of the Flies, the first child Ralph encounters is _____.')
     expect(response.body).to include('Piggy')
     post '/quiz', params: { option: "2" }
+    expect(response).to redirect_to('/quiz')
     expect(session[:quiz_id]).to_not be_nil
     get '/quiz'
     expect(response.body).to include("Correct! It was 'Piggy'")
@@ -37,6 +41,7 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(response.body).to include('In Great Expectations, does Miss Havisham die from her dress catching on fire?')
     expect(response.body).to include('No')
     post '/quiz', params: { option: "1" }
+    expect(response).to redirect_to('/review')
     expect(session[:quiz_id]).to_not be_nil
     get '/review'
     expect(response.body).to include("Sorry! It was 'Yes'")
