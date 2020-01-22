@@ -18,29 +18,17 @@ class QuizzesController < ApplicationController
     quiz_id = session[:quiz_id]
     record = QuizRecord.find(quiz_id) if quiz_id
     quiz = Quiz.new
-    if record&.q0
-      choice_index = record.q0.to_i
-      question = quiz.next_question
-      choice = question.option(choice_index)
-      quiz.answer(choice)
-      @correct = (choice == question.correct_answer)
-      @correct_answer = question.correct_answer
-    end
-    if record&.q1
-      choice_index = record.q1.to_i
-      question = quiz.next_question
-      choice = question.option(choice_index)
-      quiz.answer(choice)
-      @correct = (choice == question.correct_answer)
-      @correct_answer = question.correct_answer
-    end
-    if record&.q2
-      choice_index = record.q2.to_i
-      question = quiz.next_question
-      choice = question.option(choice_index)
-      quiz.answer(choice)
-      @correct = (choice == question.correct_answer)
-      @correct_answer = question.correct_answer
+    if record
+      %i[q0 q1 q2].each do |answer_key|
+        if record[answer_key]
+          choice_index = record[answer_key].to_i
+          question = quiz.next_question
+          choice = question.option(choice_index)
+          quiz.answer(choice)
+          @correct = (choice == question.correct_answer)
+          @correct_answer = question.correct_answer
+        end
+      end
     end
     @answer_count = quiz.answer_count
     title_prefixes = {
