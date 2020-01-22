@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
       other_quiz
     end
     @report = Report.new(all_quizzes)
-    puts @report.inspect
 
     redirect_to '/quiz' unless @quiz.complete?
   end

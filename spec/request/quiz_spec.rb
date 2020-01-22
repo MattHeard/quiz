@@ -26,5 +26,21 @@ RSpec.describe 'answering a quiz', type: :request do
     expect(session[:quiz_id]).to_not be_nil
     get '/quiz'
     expect(response.body).to include("Correct! It was 'Eighteen'")
+    expect(response.body).to include('Fourth question')
+    expect(response.body).to include('In Lord of the Flies, the first child Ralph encounters is _____.')
+    expect(response.body).to include('Piggy')
+    post '/quiz', params: { option: "2" }
+    expect(session[:quiz_id]).to_not be_nil
+    get '/quiz'
+    expect(response.body).to include("Correct! It was 'Piggy'")
+    expect(response.body).to include('Last question')
+    expect(response.body).to include('In Great Expectations, does Miss Havisham die from her dress catching on fire?')
+    expect(response.body).to include('No')
+    post '/quiz', params: { option: "1" }
+    expect(session[:quiz_id]).to_not be_nil
+    get '/review'
+    expect(response.body).to include("Sorry! It was 'Yes'")
+    expect(response.body).to include('How do you compare?')
+    expect(response.body).to include('Your answer')
   end
 end
