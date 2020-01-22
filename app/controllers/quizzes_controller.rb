@@ -30,6 +30,9 @@ class QuizzesController < ApplicationController
         end
       end
     end
+    if quiz.complete?
+      redirect_to '/review'
+    end
     @answer_count = quiz.answer_count
     title_prefixes = {
       0 => 'First',
