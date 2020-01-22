@@ -29,4 +29,12 @@ class QuizRepository
       other_quiz
     end
   end
+
+  def create!(quiz)
+    question = Quiz::QUESTIONS.first
+    choice = quiz.choice(question)
+    choice_index = question.options.index(choice)
+    record = QuizRecord.create!(q0: choice_index)
+    record.id
+  end
 end

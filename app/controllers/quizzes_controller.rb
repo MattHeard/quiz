@@ -1,24 +1,31 @@
 class QuizzesController < ApplicationController
   def update
     latest_choice_index = params['option']
-    if session[:quiz_id]
+    id = session[:quiz_id]
+    repository = QuizRepository.new
+    if id
+      quiz = repository.find_by_id(id)
       record = QuizRecord.find(session[:quiz_id])
       unanswered_question_key = %i[q0 q1 q2 q3 q4].find { |k| !record[k] }
       if unanswered_question_key
         record.update!(unanswered_question_key => latest_choice_index)
       end
     else
-      record = QuizRecord.create!(q0: latest_choice_index)
-      session[:quiz_id] = record.id
+      quiz = Quiz.new
+      question = quiz.next_question
+      choice = question.option(latest_choice_index.to_i)
+      quiz.answer(choice)
+      id = repository.create!(quiz)
+      session[:quiz_id] = id
     end
-    redirect_to (record.q4 ? '/review' : '/quiz')
+    redirect_to (quiz.complete? ? '/review' : '/quiz')
   end
 
   def edit
-    quiz_id = session[:quiz_id]
-    record = QuizRecord.find(quiz_id) if quiz_id
+    id = session[:quiz_id]
+    record = QuizRecord.find(id) if id
     repository = QuizRepository.new
-    quiz = repository.find_by_id(quiz_id)
+    quiz = repository.find_by_id(id)
     if quiz.answer_count > 0
       question = quiz.previous_question
       choice = quiz.choice(question)
