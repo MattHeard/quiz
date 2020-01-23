@@ -1,0 +1,34 @@
+- text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez'
+  options:
+    - Hours
+    - Days
+    - Months
+    - Years
+    - Centuries
+  correct_answer: 'Years'
+- text: 'Which Brontë sister wrote Jane Eyre?'
+  options:
+    - Elizabeth
+    - Charlotte
+    - Emily
+    - Anne
+    - Branwell
+  correct_answer: 'Charlotte'
+- text: 'How old was Mary Shelley when she wrote Frankenstein?'
+  options:
+    - Eighteen
+    - Twenty-one
+    - Thirty-five
+    - Fifty-four
+  correct_answer: 'Eighteen'
+- text: 'In Lord of the Flies, the first child Ralph encounters is _____.'
+  options:
+    - Jack
+    - Simon
+    - Piggy
+  correct_answer: 'Piggy'
+- text: 'In Great Expectations, does Miss Havisham die from her dress catching on fire?'
+  options:
+    - 'Yes'
+    - 'No'
+  correct_answer: 'Yes'

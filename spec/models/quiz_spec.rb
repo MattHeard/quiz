@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../app/models/quiz'
+require 'rails_helper'
 
 describe Quiz do
   subject(:quiz) { Quiz.new }

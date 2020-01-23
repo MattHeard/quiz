@@ -1,36 +1,16 @@
 # frozen_string_literal: true
 
+require 'yaml'
+
 require_relative 'question'
 
 class Quiz
-  # TODO(matt) Move the questions into a config file
-  QUESTIONS = [
-    Question.new(
-      text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez',
-      options: %w[Hours Days Months Years Centuries],
-      correct_answer: 'Years'
-    ),
-    Question.new(
-      text: 'Which Brontë sister wrote Jane Eyre?',
-      options: %w[Elizabeth Charlotte Emily Anne Branwell],
-      correct_answer: 'Charlotte'
-    ),
-    Question.new(
-      text: 'How old was Mary Shelley when she wrote Frankenstein?',
-      options: %w[Eighteen Twenty-one Thirty-five Fifty-four],
-      correct_answer: 'Eighteen'
-    ),
-    Question.new(
-      text: 'In Lord of the Flies, the first child Ralph encounters is _____.',
-      options: %w[Jack Simon Piggy],
-      correct_answer: 'Piggy'
-    ),
-    Question.new(
-      text: 'In Great Expectations, does Miss Havisham die from her dress catching on fire?',
-      options: %w[Yes No],
-      correct_answer: 'Yes'
-    )
-  ].freeze
+  QUESTION_CONFIG = YAML.load(File.read(Rails.root.join('config', 'quiz.yml')))
+  QUESTIONS = QUESTION_CONFIG.map do |q|
+    Question.new(text: q['text'],
+                 options: q['options'],
+                 correct_answer: q['correct_answer'])
+  end.freeze
 
   def initialize
     @answers = {}
