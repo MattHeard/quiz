@@ -6,6 +6,10 @@ A few questions about classic books and authors.
 
 There are five questions, and once they are all answered, you can see how other quiz-takers answered.
 
+## Dependencies
+
+1. Ruby 2.6.3
+
 ## Install
 
 ```
