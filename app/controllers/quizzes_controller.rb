@@ -6,11 +6,11 @@ class QuizzesController < ApplicationController
     id = session[:quiz_id]
     repository = QuizRepository.new
     if id
-      record = QuizRecord.find(session[:quiz_id])
-      unanswered_question_key = %i[q0 q1 q2 q3 q4].find { |k| !record[k] }
-      if unanswered_question_key
-        record.update!(unanswered_question_key => latest_choice_index)
-      end
+      quiz = repository.find_by_id(id)
+      question = quiz.next_question
+      choice = question.option(latest_choice_index.to_i)
+      quiz.answer(choice)
+      repository.update!(id, quiz)
     else
       quiz = Quiz.new
       question = quiz.next_question
@@ -19,7 +19,6 @@ class QuizzesController < ApplicationController
       id = repository.create!(quiz)
       session[:quiz_id] = id
     end
-    quiz = repository.find_by_id(id)
     redirect_to (quiz.complete? ? '/review' : '/quiz')
   end
 

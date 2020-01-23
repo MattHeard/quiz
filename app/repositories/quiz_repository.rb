@@ -37,4 +37,14 @@ class QuizRepository
     record = QuizRecord.create!(q0: choice_index)
     record.id
   end
+
+  def update!(quiz_id, quiz)
+    record = QuizRecord.find(quiz_id)
+    previous_question = quiz.previous_question
+    question_index = Quiz::QUESTIONS.index(previous_question)
+    question_key = "q#{question_index}"
+    choice = quiz.choice(previous_question)
+    choice_index = previous_question.options.index(choice)
+    record.update!(question_key => choice_index)
+  end
 end
