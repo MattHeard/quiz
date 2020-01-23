@@ -1,10 +1,11 @@
+require 'byebug'
+
 class QuizzesController < ApplicationController
   def update
     latest_choice_index = params['option']
     id = session[:quiz_id]
     repository = QuizRepository.new
     if id
-      quiz = repository.find_by_id(id)
       record = QuizRecord.find(session[:quiz_id])
       unanswered_question_key = %i[q0 q1 q2 q3 q4].find { |k| !record[k] }
       if unanswered_question_key
@@ -18,6 +19,7 @@ class QuizzesController < ApplicationController
       id = repository.create!(quiz)
       session[:quiz_id] = id
     end
+    quiz = repository.find_by_id(id)
     redirect_to (quiz.complete? ? '/review' : '/quiz')
   end
 
