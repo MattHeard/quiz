@@ -1,24 +1,31 @@
-# README
+# A book quiz
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+A few questions about classic books and authors.
 
-* Ruby version
+There are five questions, and once they are all answered, you can see how other quiz-takers answered.
 
-* System dependencies
+## Install
 
-* Configuration
+```
+$ git clone --depth 1 git@github.com:MattHeard/quiz.git
+$ bundle
+```
 
-* Database creation
+## Run the web server
 
-* Database initialization
+```
+$ bundle exec rails server
+```
 
-* How to run the test suite
+Visit `http://localhost:3000/` to visit the start page.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Run the automated tests
 
-* Deployment instructions
+```
+$ bundle exec rspec
+```
 
-* ...
+There is a suite of unit tests to validate the logic and one request test as a
+regression smoke test for the happy case user flow.
