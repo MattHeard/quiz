@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'question'
 
 class Quiz
@@ -5,33 +7,33 @@ class Quiz
   QUESTIONS = [
     Question.new(
       text: 'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez',
-      options: ['Hours', 'Days', 'Months', 'Years', 'Centuries'],
+      options: %w[Hours Days Months Years Centuries],
       correct_answer: 'Years'
     ),
     Question.new(
       text: 'Which Brontë sister wrote Jane Eyre?',
-      options: ['Elizabeth', 'Charlotte', 'Emily', 'Anne', 'Branwell'],
+      options: %w[Elizabeth Charlotte Emily Anne Branwell],
       correct_answer: 'Charlotte'
     ),
     Question.new(
       text: 'How old was Mary Shelley when she wrote Frankenstein?',
-      options: ['Eighteen', 'Twenty-one', 'Thirty-five', 'Fifty-four'],
+      options: %w[Eighteen Twenty-one Thirty-five Fifty-four],
       correct_answer: 'Eighteen'
     ),
     Question.new(
       text: 'In Lord of the Flies, the first child Ralph encounters is _____.',
-      options: ['Jack', 'Simon', 'Piggy'],
+      options: %w[Jack Simon Piggy],
       correct_answer: 'Piggy'
     ),
     Question.new(
       text: 'In Great Expectations, does Miss Havisham die from her dress catching on fire?',
-      options: ['Yes', 'No'],
+      options: %w[Yes No],
       correct_answer: 'Yes'
     )
   ].freeze
 
   def initialize
-    @answers = Hash.new
+    @answers = {}
   end
 
   def complete?

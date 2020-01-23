@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/quiz'
 
 describe Quiz do
@@ -13,13 +15,13 @@ describe Quiz do
         'Fill in the blank: One Hundred ____ of Solitude by Gabriel García Márquez'
       expect(quiz.next_question.to_s).to eq expected_question
     end
-    
+
     it 'has no previous question' do
       expect(quiz.previous_question).to be_nil
     end
 
     it 'has five options for answering the first question' do
-      expected_options = ['Hours', 'Days', 'Months', 'Years', 'Centuries']
+      expected_options = %w[Hours Days Months Years Centuries]
       expect(quiz.next_question.options).to eq expected_options
     end
 
@@ -57,7 +59,7 @@ describe Quiz do
     end
 
     it 'has five options for answering the second question' do
-      expected_options = ['Elizabeth', 'Charlotte', 'Emily', 'Anne', 'Branwell']
+      expected_options = %w[Elizabeth Charlotte Emily Anne Branwell]
       expect(quiz.next_question.options).to eq expected_options
     end
   end
@@ -105,7 +107,7 @@ describe Quiz do
     end
 
     it 'has four options for answering the third question' do
-      expected_options = ['Eighteen', 'Twenty-one', 'Thirty-five', 'Fifty-four']
+      expected_options = %w[Eighteen Twenty-one Thirty-five Fifty-four]
       expect(quiz.next_question.options).to eq expected_options
     end
   end
@@ -146,7 +148,7 @@ describe Quiz do
     end
 
     it 'has three options for answering the fourth question' do
-      expected_options = ['Jack', 'Simon', 'Piggy']
+      expected_options = %w[Jack Simon Piggy]
       expect(quiz.next_question.options).to eq expected_options
     end
   end
@@ -175,7 +177,7 @@ describe Quiz do
     end
 
     it 'has two options for answering the fifth and last question' do
-      expected_options = ['Yes', 'No']
+      expected_options = %w[Yes No]
       expect(quiz.next_question.options).to eq expected_options
     end
   end

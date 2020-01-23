@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Report
   def initialize(quizzes)
     @quizzes = quizzes

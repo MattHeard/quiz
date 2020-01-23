@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../app/models/quiz'
 require_relative '../../app/models/report'
 
