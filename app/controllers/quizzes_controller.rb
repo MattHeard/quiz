@@ -25,7 +25,6 @@ class QuizzesController < ApplicationController
 
   def edit
     id = session[:quiz_id]
-    record = QuizRecord.find(id) if id
     repository = QuizRepository.new
     quiz = repository.find_by_id(id)
     if quiz.answer_count > 0
