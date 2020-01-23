@@ -11,6 +11,7 @@ There are five questions, and once they are all answered, you can see how other 
 ```
 $ git clone --depth 1 git@github.com:MattHeard/quiz.git
 $ bundle
+$ bundle exec rails db:migrate
 ```
 
 ## Run the web server
